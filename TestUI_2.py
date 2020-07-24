@@ -3,7 +3,7 @@ import configparser
 import os
 from tkinter.ttk import Combobox
 from tkinter import messagebox
-import input_port
+
 import time
 
 def call_port():
@@ -192,10 +192,15 @@ def show_message(listans):
     
     boot.geometry('300x250')
     boot.resizable(width=False, height=False)
+    
+
+
+    bo= Button(boot, text="Stop", width=12,bg='brown',fg='white',command=boot.destroy)
+    bo.pack()
 
     listbox0 = Listbox(boot)
     listbox0.pack()
-
+    
 
     count = len(listans)
     
@@ -245,6 +250,7 @@ def exit1():
             os.remove("Get_data.ini")
     if(answer):
         root.destroy()
+        
 
 def get_config(path):
     config = configparser.ConfigParser()
@@ -263,6 +269,9 @@ def get_section(path):
     config = get_config(path)
     sect = config.sections()
     return sect
+
+def disable_event():
+    pass   #remove X
 
 
 ##myButton = Button(root, text="Click Me", command=myClick)
@@ -289,6 +298,6 @@ b3.place(x=70,y=250)
 listbox1 = Listbox(root, width=50, heigh=15)
 listbox1.place(x=500,y=80)
 
-
+root.protocol("WM_DELETE_WINDOW", disable_event)
 
 root.mainloop()

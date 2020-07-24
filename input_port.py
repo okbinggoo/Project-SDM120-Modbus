@@ -65,17 +65,22 @@ def check_write():
             answer = messagebox.showinfo("Message","Successful!!!")
             poot.destroy()
     else:
-        messagebox.showinfo("Message", "Please Enter The Message Again")
+        messagebox.showinfo("Message", "Please choose port from list")
+
+    import TestUI_2.py
 
    
         
 def disable_event():
-    pass      
+    pass
+
+def Exit():
+    poot.destroy()
     
 
-b4= Button(poot, text="Submit", width=12,bg='brown',fg='white',command=check_write)
-    
-b4.place(x=220,y=100)
+b4= Button(poot, text="Submit", width=12,bg='brown',fg='white',command=check_write).place(x=90,y=100)
+
+b5 = Button(poot, text="Exit", width=12,bg='brown',fg='white',command=Exit).place(x=290,y=100)
 
 poot.protocol("WM_DELETE_WINDOW", disable_event)
     
